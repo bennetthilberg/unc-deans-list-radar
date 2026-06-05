@@ -1,0 +1,10 @@
+{
+  "name": "unc-deans-list-radar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "generate:data": "node scripts/generate-data.js",
+    "generate:icons": "node scripts/generate-icons.js",
+    "test": "node scripts/generate-data.js --check && node test/extension.test.js"
+  }
+}
