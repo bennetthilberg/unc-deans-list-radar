@@ -4,7 +4,9 @@ const path = require("path");
 const vm = require("vm");
 
 const root = path.resolve(__dirname, "..");
-const { normalizeName } = require(path.join(root, "src", "name-utils.js"));
+const { normalizeName, shouldShowBadgeForRole } = require(
+  path.join(root, "src", "name-utils.js")
+);
 
 const context = { globalThis: {} };
 vm.createContext(context);
@@ -32,6 +34,10 @@ assert(Array.isArray(data));
 assert(data.length > 0);
 assert.strictEqual(normalizeName(" José  O\u2019Neil "), "jose o'neil");
 assert.strictEqual(normalizeName("Ava\u2013Marie"), "ava-marie");
+assert.strictEqual(shouldShowBadgeForRole("Teacher"), false);
+assert.strictEqual(shouldShowBadgeForRole(" teacher "), false);
+assert.strictEqual(shouldShowBadgeForRole("Student"), true);
+assert.strictEqual(shouldShowBadgeForRole("TA"), true);
 assert.strictEqual(lookup.get(normalizeName("Aadi Patel")).length, 2);
 assert.strictEqual(listed("Lila Anafi"), true);
 assert.strictEqual(listed("Bennett Hilberg"), true);
