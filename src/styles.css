@@ -1,0 +1,29 @@
+.unc-dlr-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.unc-dlr-chip--listed {
+  color: #13294b;
+  background: #eef7fc;
+  border-color: #8fc4e7;
+}
+
+.unc-dlr-chip--missing {
+  color: #4a5568;
+  background: #f4f5f7;
+  border-color: #d8dde3;
+}
