@@ -2,8 +2,9 @@
   const root = globalThis.UNC_DEANS_LIST_RADAR || {};
   const data = globalThis.UNC_DEANS_LIST_RADAR_DATA || [];
   const normalizeName = root.normalizeName;
+  const shouldShowBadgeForRole = root.shouldShowBadgeForRole;
 
-  if (!normalizeName || !Array.isArray(data)) {
+  if (!normalizeName || !shouldShowBadgeForRole || !Array.isArray(data)) {
     return;
   }
 
@@ -37,15 +38,40 @@
     return listed ? "Dean's List" : "Not listed";
   }
 
+  function roleForRow(row) {
+    const cells = Array.from(row.querySelectorAll(":scope > td"));
+    const headers = Array.from(
+      row.closest("table")?.querySelectorAll("thead th") || []
+    );
+    const roleIndex = headers.findIndex(
+      (header) => normalizeName(header.textContent) === "role"
+    );
+
+    if (roleIndex >= 0 && cells[roleIndex]) {
+      return cells[roleIndex].textContent.trim();
+    }
+
+    return "";
+  }
+
   function updateBadge(anchor) {
+    const row = anchor.closest("tr.rosterUser");
     const cell = anchor.closest("td");
     const name = anchor.textContent.trim();
 
-    if (!cell || !name) {
+    if (!row || !cell || !name) {
       return;
     }
 
     const badges = Array.from(cell.querySelectorAll(`.${badgeClass}`));
+
+    if (!shouldShowBadgeForRole(roleForRow(row))) {
+      for (const existing of badges) {
+        existing.remove();
+      }
+      return;
+    }
+
     const badge = badges.shift() || document.createElement("span");
 
     for (const extra of badges) {

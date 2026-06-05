@@ -10,7 +10,11 @@
       .toLowerCase();
   }
 
-  const api = { normalizeName };
+  function shouldShowBadgeForRole(value) {
+    return normalizeName(value) !== "teacher";
+  }
+
+  const api = { normalizeName, shouldShowBadgeForRole };
 
   if (typeof module !== "undefined" && module.exports) {
     module.exports = api;
