@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const inputPath = path.join(root, "unc_fall_2025_deans_list.csv");
+const inputPath = path.join(root, "unc_spring_2026_deans_list.csv");
 const outputPath = path.join(root, "src", "deans-list-data.js");
 const expectedHeader = ["name", "proj_level", "city", "state"];
 

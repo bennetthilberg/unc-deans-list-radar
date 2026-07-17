@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UNC Deans List Radar",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shows Dean's List status on UNC-Chapel Hill Canvas rosters",
   "icons": {
     "16": "icons/icon16.png",
