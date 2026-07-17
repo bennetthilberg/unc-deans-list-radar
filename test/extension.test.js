@@ -31,14 +31,16 @@ function listed(name) {
 }
 
 assert(Array.isArray(data));
-assert(data.length > 0);
+assert.strictEqual(data.length, 11020);
 assert.strictEqual(normalizeName(" José  O\u2019Neil "), "jose o'neil");
 assert.strictEqual(normalizeName("Ava\u2013Marie"), "ava-marie");
 assert.strictEqual(shouldShowBadgeForRole("Teacher"), false);
 assert.strictEqual(shouldShowBadgeForRole(" teacher "), false);
 assert.strictEqual(shouldShowBadgeForRole("Student"), true);
 assert.strictEqual(shouldShowBadgeForRole("TA"), true);
-assert.strictEqual(lookup.get(normalizeName("Aadi Patel")).length, 2);
+assert.strictEqual(lookup.get(normalizeName("Abigail Wilson")).length, 2);
+assert.strictEqual(lookup.get(normalizeName("Emma Mitchell")).length, 3);
+assert.strictEqual(listed("A Hyun Kim"), true);
 assert.strictEqual(listed("Lila Anafi"), true);
 assert.strictEqual(listed("Bennett Hilberg"), true);
 assert.strictEqual(listed("William Layton"), true);

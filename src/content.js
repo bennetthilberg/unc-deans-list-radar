@@ -84,8 +84,8 @@
     }`;
     badge.textContent = badgeText(listed);
     badge.title = listed
-      ? "listed in the fall 2025 unc dean's list"
-      : "not found in the fall 2025 unc dean's list";
+      ? "listed in the spring 2026 unc dean's list"
+      : "not found in the spring 2026 unc dean's list";
     badge.setAttribute("aria-label", badge.title);
 
     if (!badge.parentNode || badge.previousElementSibling !== anchor) {
